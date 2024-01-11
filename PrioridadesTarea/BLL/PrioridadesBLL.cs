@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PrioridadesTarea.DAL;
 using PrioridadesTarea.Models;
+using System.Linq.Expressions;
 
 namespace PrioridadesTarea.BLL
 {
@@ -42,6 +43,13 @@ namespace PrioridadesTarea.BLL
             return _contexto.Prioridades.Where(o => o.PrioridadId == prioridadId)
                 .AsNoTracking()
                 .SingleOrDefault();
+        }
+
+        public List<Prioridades>GetList(Expression<Func<Prioridades, bool>> criterio) {
+            return _contexto.Prioridades
+                .AsNoTracking()
+                .Where(criterio)
+                .ToList();
         }
     }
 }
