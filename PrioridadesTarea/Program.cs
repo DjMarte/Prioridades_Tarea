@@ -1,10 +1,17 @@
 using PrioridadesTarea.Components;
+using Microsoft.EntityFrameworkCore;
+using PrioridadesTarea.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var ConStr = builder.Configuration.GetConnectionString("ConStr");
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+//Inyectar
+builder.Services.AddDbContext<Contexto>(options => options.UseSqlite(ConStr));
 
 var app = builder.Build();
 
