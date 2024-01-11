@@ -11,6 +11,8 @@ namespace PrioridadesTarea.Models
         public string? Descripcion { get; set; }
 
         [Required(ErrorMessage = "Campo obligatorio")]
+        public int DiasCompromiso { get; set; }
+
 
     }
 }
